@@ -1,0 +1,32 @@
+version: '3'
+services:
+  postgres:
+    container_name: airflowmeta_example
+    image: postgres:9.6.3
+    environment:
+      POSTGRES_PASSWORD: airflow123
+      POSTGRES_USER: airflow
+      POSTGRES_DB: airflow
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./.data/pg:/var/lib/postgresql/data
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost:5432"]
+        interval: 30s
+        timeout: 10s
+        retries: 5
+  airflow:
+    build: .
+    image: airflow_compose:latest
+    restart: on-failure
+    environment:
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow123@postgres:5432/airflow
+    ports:
+      - "8080:8080"
+      - "5555:5555"
+      - "8793:8793"
+    depends_on:
+      - postgres
+    links:
+      - postgres:postgres
