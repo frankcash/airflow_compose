@@ -2,6 +2,12 @@
 
 A project for maintaining ETLs with Apache's Airflow.
 
+## Running with Docker Compose
+
+`docker-compose up --build`
+
+## Running Locally
+
 ### Getting dependencies installed
 
 ```
