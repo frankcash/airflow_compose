@@ -122,3 +122,4 @@ temp/*.csv
 
 *.pid
 .data/
+config/.env.production

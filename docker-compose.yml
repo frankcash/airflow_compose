@@ -20,8 +20,8 @@ services:
     build: .
     image: airflow_compose:latest
     restart: on-failure
-    environment:
-      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow123@postgres:5432/airflow
+    env_file:
+      - config/.env.production
     ports:
       - "8080:8080"
       - "5555:5555"

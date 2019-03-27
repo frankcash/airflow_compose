@@ -35,7 +35,6 @@ class PostgresToS3Operator(BaseOperator):
         return self.gen_file(content)
    
     def gen_file(self, content):
-        print(f"gen_file {content}")
         output = io.BytesIO()
         writer = csv.writer(output, delimiter='|', encoding='utf-8')
         writer.writerows(content)
