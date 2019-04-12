@@ -1,6 +1,8 @@
 # airflow_compose
 
-A project for maintaining ETLs with Apache's Airflow.
+A project for quickly spinning up Airflow in `docker-compose`.
+
+Airflow is a tool for maintaining ETLs and workflows.  If you do not know a lot about it please check out the [official docs](https://airflow.apache.org/).
 
 ## Running with Docker Compose
 
