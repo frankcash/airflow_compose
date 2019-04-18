@@ -35,30 +35,29 @@ wait_for_port() {
   done
 }
 
-export NEW_RELIC_CONFIG_FILE
 
 case "$1" in
   webserver)
-    newrelic-admin run-program airflow upgradedb
+    airflow upgradedb
     if [ "$AIRFLOW__CORE__EXECUTOR" = "LocalExecutor" ]; then
       # With the "Local" executor it should all run in one container.
-      newrelic-admin run-program airflow scheduler &
+      airflow scheduler &
     fi
     if [ "$AIRFLOW__CORE__EXECUTOR" = "SequentialExecutor" ]; then
-      newrelic-admin run-program airflow scheduler &
+      airflow scheduler &
       # newrelic-admin run-program airflow webserver &
     fi
     # exec newrelic-admin run-program airflow scheduler
 
-    exec newrelic-admin run-program airflow webserver
+    exec airflow webserver
     ;;
   worker|scheduler|flower|version)
     # To give the webserver time to run initdb.
     sleep 10
-    exec newrelic-admin run-program airflow "$@"
+    exec airflow "$@"
     ;;
   *)
     # The command is something like bash, not an airflow subcommand. Just run it in the right environment.
-    exec newrelic-admin run-program "$@"
+    exec "$@"
     ;;
 esac

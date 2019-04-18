@@ -55,5 +55,4 @@ zope.deprecation==4.3.0
 pyOpenSSL==18.0.0
 ndg-httpsclient==0.5.1
 pyasn1==0.4.4
-newrelic==4.6.0.106
-newrelic-api
+psycopg2-binary
