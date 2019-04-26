@@ -1,24 +1,23 @@
 FROM python:3.6-slim
 
 # Never prompts the user for choices on installation/configuration of packages
-ENV DEBIAN_FRONTEND noninteractive
-ENV TERM linux
+ENV DEBIAN_FRONTEND=noninteractive \
+    TERM=linux
 
 # Airflow
 ARG AIRFLOW_VERSION=1.10.0
 ARG AIRFLOW_HOME=/usr/local/airflow
-ENV AIRFLOW_GPL_UNIDECODE yes
-ENV AIRFLOW_HOME=/usr/local/airflow
+ENV AIRFLOW_GPL_UNIDECODE=yes \
+    AIRFLOW_HOME=/usr/local/airflow
 
 # Define en_US.
-ENV LANGUAGE en_US.UTF-8
-ENV LANG en_US.UTF-8
-ENV LC_ALL en_US.UTF-8
-ENV LC_CTYPE en_US.UTF-8
-ENV LC_MESSAGES en_US.UTF-8
-ENV locale-gen en_US.UTF-8
-ENV locale-gen es_CO.UTF-8
-
+ENV LANGUAGE=en_US.UTF-8 \
+    LANG=en_US.UTF-8 \
+    LC_ALL=en_US.UTF-8 \
+    LC_CTYPE=en_US.UTF-8 \
+    LC_MESSAGES=en_US.UTF-8 \
+    locale-gen=en_US.UTF-8 \
+    locale-gen=es_CO.UTF-8
 
 COPY requirements.txt ${AIRFLOW_HOME}/requirements.txt
 
