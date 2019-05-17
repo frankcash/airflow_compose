@@ -1,4 +1,4 @@
-apache-airflow[celery,crypto,emr,hive,hdfs,ldap,mysql,postgres,redis,slack,s3,kubernetes]==1.10.2
+apache-airflow[celery,crypto,emr,hive,hdfs,ldap,mysql,postgres,redis,slack,s3,kubernetes,statsd]==1.10.2
 # git+git://github.com/apache/airflow.git@de75b7a2bd7f5bef6a1d09942e0b43c17a3fbb95#egg=master # https://stackoverflow.com/questions/20101834/pip-install-from-git-repo-branch/20101940#20101940
 celery[redis]>=4.1.1,<4.2.0
 cython==0.29
