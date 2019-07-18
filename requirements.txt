@@ -1,5 +1,4 @@
 apache-airflow[celery,crypto,emr,hive,hdfs,ldap,mysql,postgres,redis,slack,s3,kubernetes,statsd]==1.10.2
-# git+git://github.com/apache/airflow.git@de75b7a2bd7f5bef6a1d09942e0b43c17a3fbb95#egg=master # https://stackoverflow.com/questions/20101834/pip-install-from-git-repo-branch/20101940#20101940
 celery[redis]>=4.1.1,<4.2.0
 cython==0.29
 alembic==0.8.10
@@ -56,3 +55,4 @@ pyOpenSSL==18.0.0
 ndg-httpsclient==0.5.1
 pyasn1==0.4.4
 psycopg2-binary
+prometheus_client

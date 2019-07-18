@@ -6,6 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
 
 # Airflow
 ARG AIRFLOW_VERSION=1.10.0
+ARG AIRFLOW_EXPORTER_VERSION=v0.5.4
 ARG AIRFLOW_HOME=/usr/local/airflow
 ENV AIRFLOW_GPL_UNIDECODE=yes \
     AIRFLOW_HOME=/usr/local/airflow
@@ -40,14 +41,15 @@ RUN set -ex \
         build-essential \
         python3-pip \
         python3-requests \
-        mysql-client \
-        mysql-server \
+        # mysql-client \
+        # mysql-server \
         default-libmysqlclient-dev \
         apt-utils \
         curl \
         rsync \
         netcat \
         locales \
+        wget \
     && sed -i 's/^# en_US.UTF-8 UTF-8$/en_US.UTF-8 UTF-8/g' /etc/locale.gen \
     && locale-gen \
     && update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 \
@@ -70,8 +72,14 @@ COPY script/entrypoint.sh /entrypoint.sh
 COPY config/airflow.cfg ${AIRFLOW_HOME}/airflow.cfg
 COPY airflow_home/ ${AIRFLOW_HOME}
 
+
 RUN mkdir ${AIRFLOW_HOME}/temp
 RUN chown -R airflow: ${AIRFLOW_HOME}
+
+RUN apt-get install wget
+RUN cd ${AIRFLOW_HOME}/plugins \
+    && wget https://github.com/epoch8/airflow-exporter/archive/${AIRFLOW_EXPORTER_VERSION}.tar.gz -O airflow-exporter-${AIRFLOW_EXPORTER_VERSION}.tar.gz \
+    && tar zxf airflow-exporter-${AIRFLOW_EXPORTER_VERSION}.tar.gz
 
 EXPOSE 8080 5555 8793
 
