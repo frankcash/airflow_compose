@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
     TERM=linux
 
 # Airflow
-ARG AIRFLOW_VERSION=1.10.0
+ARG AIRFLOW_VERSION=1.10.4
 ARG AIRFLOW_HOME=/usr/local/airflow
 ENV AIRFLOW_GPL_UNIDECODE=yes \
     AIRFLOW_HOME=/usr/local/airflow
@@ -40,8 +40,6 @@ RUN set -ex \
         build-essential \
         python3-pip \
         python3-requests \
-        mysql-client \
-        mysql-server \
         default-libmysqlclient-dev \
         apt-utils \
         curl \
@@ -69,6 +67,7 @@ RUN set -ex \
 COPY script/entrypoint.sh /entrypoint.sh
 COPY config/airflow.cfg ${AIRFLOW_HOME}/airflow.cfg
 COPY airflow_home/ ${AIRFLOW_HOME}
+
 
 RUN mkdir ${AIRFLOW_HOME}/temp
 RUN chown -R airflow: ${AIRFLOW_HOME}
