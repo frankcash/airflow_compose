@@ -16,19 +16,6 @@ services:
         interval: 30s
         timeout: 10s
         retries: 5
-  graphite:
-    container_name: airflow_graphite_example
-    image: hopsoft/graphite-statsd:latest
-    ports:
-      - "8880:80"
-      - "8881:81"
-      - "8125:8125"
-      - "8126:8126"
-    healthcheck:
-        test: ["CMD", "curl", "-f", "http://localhost:80"]
-        interval: 30s
-        timeout: 10s
-        retries: 5
   airflow:
     build: .
     image: airflow_compose:latest
@@ -43,10 +30,7 @@ services:
     ports:
       - "8080:8080"
       - "5555:5555"
-      - "8793:8793"
     depends_on:
       - postgres
-      - graphite
     links:
       - postgres:postgres
-      - graphite:graphite
