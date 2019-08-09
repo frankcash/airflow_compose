@@ -1,4 +1,4 @@
-apache-airflow[celery,crypto,emr,hive,hdfs,ldap,mysql,postgres,redis,slack,s3,kubernetes,statsd]==1.10.4
+apache-airflow[celery,crypto,emr,hive,hdfs,ldap,mysql,postgres,redis,s3,kubernetes]==1.10.4
 celery[redis]>=4.1.1,<4.2.0
 cython==0.29
 certifi==2018.4.16
@@ -19,9 +19,7 @@ lxml>=4.0.0
 Mako==1.0.7
 Markdown==2.6.11
 MarkupSafe==1.0
-numpy==1.15.0
 ordereddict==1.1
-pandas==0.23.3
 psutil==4.4.2
 Pygments==2.2.0
 python-daemon==2.1.2
