@@ -1,2 +1,11 @@
-build:
-	docker build --no-cache --rm -t airflow_compose:latest .
+compile:
+	docker-compose build
+
+start:
+	docker-compose up -d
+
+stop:
+	docker-compose down
+
+run: compile \
+	start
