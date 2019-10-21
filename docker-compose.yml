@@ -2,7 +2,7 @@ version: '3'
 services:
   postgres:
     container_name: airflowmeta_example
-    image: postgres:9.6.3
+    image: postgres:9.6.3-alpine
     environment:
       POSTGRES_PASSWORD: airflow123
       POSTGRES_USER: airflow
