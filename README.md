@@ -51,8 +51,13 @@ Go to the configuration tab underneath admin to add a database connection.
 
 # Resources for Learning Apache Airflow
 
+## Technical Reads
 - http://michal.karzynski.pl/blog/2017/03/19/developing-workflows-with-apache-airflow/
 - http://tech.marksblogg.com/airflow-postgres-redis-forex.html
 - https://cloud.google.com/blog/products/gcp/how-to-aggregate-data-for-bigquery-using-apache-airflow
-- https://www.dataengineeringpodcast.com/airflow-in-production-with-james-meickle-episode-43/
 - https://www.astronomer.io/guides/dag-best-practices/
+- https://medium.com/bluecore-engineering/were-all-using-airflow-wrong-and-how-to-fix-it-a56f14cb0753
+
+## Podcasts
+- https://www.dataengineeringpodcast.com/airflow-in-production-with-james-meickle-episode-43/
+
