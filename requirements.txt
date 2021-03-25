@@ -28,7 +28,7 @@ python-editor==1.0.3
 python-nvd3==0.15.0
 python-slugify==1.2.5
 pytz==2018.5
-PyYAML==3.13
+PyYAML==5.4
 requests<3,>=2.20.0
 setproctitle==1.1.10
 six==1.11.0
