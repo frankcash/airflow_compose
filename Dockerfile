@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
     TERM=linux
 
 # Airflow
-ARG AIRFLOW_VERSION=1.10.4
+ARG AIRFLOW_VERSION=2.1.0
 ARG AIRFLOW_HOME=/usr/local/airflow
 ENV AIRFLOW_GPL_UNIDECODE=yes \
     AIRFLOW_HOME=/usr/local/airflow

@@ -38,7 +38,7 @@ wait_for_port() {
 
 case "$1" in
   webserver)
-    airflow upgradedb
+    airflow db init
     if [ "$AIRFLOW__CORE__EXECUTOR" = "LocalExecutor" ]; then
       # With the "Local" executor it should all run in one container.
       airflow scheduler &
