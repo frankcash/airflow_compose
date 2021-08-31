@@ -6,6 +6,9 @@ from datetime import datetime, timedelta
 
 
 def show_tables():
+    """
+    show_tables queries elasticsearch to list available tables
+    """
     es = ElasticsearchHook(elasticsearch_conn_id='production-es')
     with es.get_conn() as es_conn:
         tables = es_conn.execute('SHOW TABLES')
@@ -30,11 +33,11 @@ with DAG('elasticsearch_dag',
          max_active_runs=1,
          schedule_interval=timedelta(days=1),  # https://airflow.apache.org/docs/stable/scheduler.html#dag-runs
          default_args=default_args,
-         catchup=False # enable if you don't want historical dag runs to run
+         catchup=False
          ) as dag:
 
 
-        tn = PythonOperator(
+        es_tables = PythonOperator(
             task_id=f'es_print_tables',
             python_callable=show_tables
         )
