@@ -31,13 +31,12 @@ default_args = {
 with DAG('elasticsearch_dag',
          start_date=datetime(2021, 8, 30),
          max_active_runs=1,
-         schedule_interval=timedelta(days=1),  # https://airflow.apache.org/docs/stable/scheduler.html#dag-runs
+         schedule_interval=timedelta(days=1),
          default_args=default_args,
          catchup=False
          ) as dag:
 
-
-        es_tables = PythonOperator(
-            task_id=f'es_print_tables',
-            python_callable=show_tables
-        )
+    es_tables = PythonOperator(
+        task_id='es_print_tables',
+        python_callable=show_tables
+    )
