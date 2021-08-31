@@ -5,18 +5,13 @@ from airflow.operators.python_operator import PythonOperator
 from datetime import datetime, timedelta
 
 
-def my_custom_function(**kwargs):
+def show_tables():
     es = ElasticsearchHook(elasticsearch_conn_id='production-es')
-    es_conn = es.get_conn()
-    tables = es_conn.execute('SHOW TABLES')
-    for table, *_ in tables:
-        print(f"table: {table}")
-        rows = es_conn.execute(f'SELECT COUNT(*) FROM {table}')
-        print([row for row in rows])
-
-    
-
-    return
+    with es.get_conn() as es_conn:
+        tables = es_conn.execute('SHOW TABLES')
+        for table, *_ in tables:
+            print(f"table: {table}")
+    return True
 
 
 # Default settings applied to all tasks
@@ -40,7 +35,6 @@ with DAG('elasticsearch_dag',
 
 
         tn = PythonOperator(
-            task_id=f'python_print_date',
-            python_callable=my_custom_function,
-            op_kwargs={'task_number': 0},
+            task_id=f'es_print_tables',
+            python_callable=show_tables
         )
